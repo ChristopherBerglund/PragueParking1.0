@@ -10,3 +10,15 @@
 /Users/chris/Projects/PragueParking1.0/PragueParking1.0/obj/Debug/netcoreapp3.1/PragueParking1.0.dll
 /Users/chris/Projects/PragueParking1.0/PragueParking1.0/obj/Debug/netcoreapp3.1/PragueParking1.0.pdb
 /Users/chris/Projects/PragueParking1.0/PragueParking1.0/obj/Debug/netcoreapp3.1/PragueParking1.0.genruntimeconfig.cache
+/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/PragueParking1.0/bin/Debug/netcoreapp3.1/PragueParking1.0.deps.json
+/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/PragueParking1.0/bin/Debug/netcoreapp3.1/PragueParking1.0.runtimeconfig.json
+/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/PragueParking1.0/bin/Debug/netcoreapp3.1/PragueParking1.0.runtimeconfig.dev.json
+/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/PragueParking1.0/bin/Debug/netcoreapp3.1/PragueParking1.0.dll
+/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/PragueParking1.0/bin/Debug/netcoreapp3.1/PragueParking1.0.pdb
+/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/PragueParking1.0/obj/Debug/netcoreapp3.1/PragueParking1.0.csprojAssemblyReference.cache
+/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/PragueParking1.0/obj/Debug/netcoreapp3.1/PragueParking1.0.AssemblyInfoInputs.cache
+/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/PragueParking1.0/obj/Debug/netcoreapp3.1/PragueParking1.0.AssemblyInfo.cs
+/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/PragueParking1.0/obj/Debug/netcoreapp3.1/PragueParking1.0.csproj.CoreCompileInputs.cache
+/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/PragueParking1.0/obj/Debug/netcoreapp3.1/PragueParking1.0.dll
+/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/PragueParking1.0/obj/Debug/netcoreapp3.1/PragueParking1.0.pdb
+/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/PragueParking1.0/obj/Debug/netcoreapp3.1/PragueParking1.0.genruntimeconfig.cache

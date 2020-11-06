@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/chris/Projects/PragueParking1.0/PragueParking1.0/PragueParking1.0.csproj",
+      "projectUniqueName": "/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/PragueParking1.0/PragueParking1.0.csproj",
       "projectName": "PragueParking1.0",
-      "projectPath": "/Users/chris/Projects/PragueParking1.0/PragueParking1.0/PragueParking1.0.csproj",
+      "projectPath": "/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/PragueParking1.0/PragueParking1.0.csproj",
       "packagesPath": "/Users/chris/.nuget/packages/",
-      "outputPath": "/Users/chris/Projects/PragueParking1.0/PragueParking1.0/obj/",
+      "outputPath": "/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/PragueParking1.0/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/chris/.config/NuGet/NuGet.Config"

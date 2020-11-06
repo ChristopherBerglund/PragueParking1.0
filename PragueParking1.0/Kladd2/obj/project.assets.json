@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/chris/Projects/PragueParking1.0/Kladd2/Kladd2.csproj",
+      "projectUniqueName": "/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/Kladd2/Kladd2.csproj",
       "projectName": "Kladd2",
-      "projectPath": "/Users/chris/Projects/PragueParking1.0/Kladd2/Kladd2.csproj",
+      "projectPath": "/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/Kladd2/Kladd2.csproj",
       "packagesPath": "/Users/chris/.nuget/packages/",
-      "outputPath": "/Users/chris/Projects/PragueParking1.0/Kladd2/obj/",
+      "outputPath": "/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/Kladd2/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/chris/.config/NuGet/NuGet.Config"
