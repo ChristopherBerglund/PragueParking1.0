@@ -10,18 +10,17 @@ namespace ArrayApplication
         static public void Main()
         {
             //Skapar en lista med 100 platser. 
-            string[] ParkingSlots = new string[101];
-            { };
-
+            string[] ParkingSlots = new string[101]; { };
             for (var i = 1; i < 101; i++)
             {
-                ParkingSlots[i] = i + ".empty";
+                ParkingSlots[i] = "EMPTY1 ; EMPTY2";
             }
 
             bool retry = true;
             while (retry)   //Om användaren ger ett felaktigt val, börjar programmet om.
             {
                 //Användare-meny.
+                Console.Clear();
                 Console.WriteLine("Welcome to Prague Parking");
                 Console.WriteLine();
                 Console.WriteLine("1. Park vehicle");
@@ -30,51 +29,205 @@ namespace ArrayApplication
                 Console.WriteLine("3. Move a vehicle");
                 Console.WriteLine("4. Search for a vehicle");
                 Console.WriteLine("5. Check for free slots");
+                Console.WriteLine("6. Check all slots");
                 Console.WriteLine();
-                Console.WriteLine("6. Exit program (Admin only)");
+                Console.WriteLine("7. Exit program (Admin only)");
                 Console.WriteLine();
                 Console.WriteLine("Choose a number and press \"enter\" for the desired selection:");
-                string nOk = Console.ReadLine();
-                int userChoice;
-                Int32.TryParse(nOk, out userChoice);
+                string Hej = Console.ReadLine();int userChoice;Int32.TryParse(Hej, out userChoice);
 
-
-                //Switch Meny.
+                //Användarens val går till switchEn.
                 switch (userChoice)
                 {
-                    case 1:
+                    case 1: //Parkera Fordon.
                         Console.Clear();
                         Console.WriteLine("Enter: 1. Car | 2. MC");
-                        string vehicletype = Console.ReadLine();
-                        Console.WriteLine("Enter your license plate number:");
-                        string vehicle = Console.ReadLine();
-                        parkVehicle(vehicle, ParkingSlots);
-                        break;
-                    case 2:
+                        string typ = Console.ReadLine().ToUpper();int Type;Int32.TryParse(typ, out Type);
+
+                        if (Type == 2)//Parkera Bil, kontrollera att regnummer inte redan finns i systemet. 
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Enter your 10 letter license plate number:");
+                            string vehicle = Console.ReadLine().ToUpper();
+                            int sum = 0;
+                            for(var i=1; i < ParkingSlots.Length; i++)
+                            {if (ParkingSlots[i].Contains(vehicle)){sum++;}}
+
+                            if (vehicle.Length == 10 && sum == 0)
+                            {
+                                parkVehicleMC(Type, vehicle, ParkingSlots);
+                                break;
+                            }
+                            else
+                            {
+                                Console.Clear();
+                                Console.WriteLine("The license plate number must be 10 letters\n(Or the platenumber already exist), try again.");
+                                Thread.Sleep(4000);
+                                Console.Clear();
+                                break;
+                            }
+                        }
+                        else if (Type == 1) //Parkera MC
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Enter your 10 letter license plate number:");
+                            string vehicle1 = Console.ReadLine().ToUpper();
+                            int sum = 0;
+                            for (var i = 1; i < ParkingSlots.Length; i++)
+                            {
+                                if (ParkingSlots[i].Contains(vehicle1))
+                                {
+                                    sum++;
+                                }
+                            }
+                            if (vehicle1.Length == 10 && sum == 0)
+                            {
+                                parkVehicle(Type, vehicle1, ParkingSlots);
+                                break;
+                            }
+                            else
+                            {
+                                Console.Clear();
+                                Console.WriteLine("The license plate number must be 10 letters\n(Or the platenumber already exist), try again.");
+                                Thread.Sleep(4000);
+                                Console.Clear();
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid input, try again.");
+                            Thread.Sleep(3000);
+                            Console.Clear();
+                            break;
+                        }
+        
+                    case 2://Avparkera fordon.
                         Console.Clear();
-                        Console.WriteLine("Enter your license plate number:");
-                        string vehicleOut = Console.ReadLine();
-                        UnParkVehicle(vehicleOut, ParkingSlots);
-                        break;
-                    case 3:
+                        Console.WriteLine("Enter: 1. Car | 2. MC");
+                        string typ1 = Console.ReadLine().ToUpper();int Type1;Int32.TryParse(typ1, out Type1);
+
+                        if (Type1 == 2)//Avparkera bil.
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Enter your 10 letter license plate number:");
+                            string vehicle = Console.ReadLine().ToUpper();
+                            if (vehicle.Length == 10)
+                            {
+                                unParkVehicleMC(Type1, vehicle, ParkingSlots);
+                                break;
+                            }
+                            else
+                            {
+                                Console.Clear();
+                                Console.WriteLine("The license plate number must be 10 letters, try again.");
+                                Thread.Sleep(3000);
+                                Console.Clear();
+                                break;
+                            }
+                        }
+                        else if (Type1 == 1) //Avparkera MC.
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Enter your 10 letter license plate number:");
+                            string vehicle1 = Console.ReadLine().ToUpper();
+                            if (vehicle1.Length == 10)
+                            {
+                                unParkVehicle(Type1, vehicle1, ParkingSlots);
+                                break;
+                            }
+                            else
+                            {
+                                Console.Clear();
+                                Console.WriteLine("The license plate number must be 10 letters, try again.");
+                                Thread.Sleep(3000);
+                                Console.Clear();
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Invalid input, try again.");
+                            Thread.Sleep(3000);
+                            Console.Clear();
+                            break;
+                        }
+                    case 3://Flytta Bil:
                         Console.Clear();
-                        moveVehicle();
-                        break;
-                    case 4:
                         Console.Clear();
-                        Console.WriteLine("Enter your license plate number:");
-                        string vehicleOut1 = Console.ReadLine();
-                        searchVehicle(vehicleOut1, ParkingSlots);
-                        break;
+                        Console.WriteLine("Enter: 1. Car | 2. MC");
+                        string typ2 = Console.ReadLine().ToUpper(); int Type3; Int32.TryParse(typ2, out Type3);
+
+                        if(Type3 == 1)
+                        {
+                            Console.WriteLine("Enter license plate number:");
+                            string vehicleMove = Console.ReadLine().ToUpper();
+                            moveVehicle(vehicleMove, ParkingSlots);
+                            break;
+                        }
+
+                        else if(Type3 == 2)
+                        {
+                            Console.WriteLine("Enter license plate number:");
+                            string vehicleMove = Console.ReadLine().ToUpper();
+                            moveVehicleMC(vehicleMove, ParkingSlots);
+                            break;
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Invalid input, try again.");
+                            Thread.Sleep(3000);
+                            Console.Clear();
+                            break;
+                        }
+                    case 4: //Sök efter fordon.
+                        Console.Clear();
+                        Console.WriteLine("Enter your 10 letter license plate number:");
+                        string vehicleS = Console.ReadLine().ToUpper();
+                        if (vehicleS.Length == 10)
+                        {
+                            searchVehicle(vehicleS, ParkingSlots);
+                            break;
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("The license plate number must be 10 letters, try again.");
+                            Thread.Sleep(3000);
+                            Console.Clear();
+                            break;
+                        }
+        //Se tillgänglighet i parkeringshus.
                     case 5:
                         Console.Clear();
                         checkSlots(ParkingSlots);
                         break;
                     case 6:
                         Console.Clear();
-                        Console.WriteLine("Program is shutting down");
+                        ShowAll(ParkingSlots);
+                        break;
+                    case 7:
+                        Console.Clear();
                         retry = false;
                         break;
+                        //Console.Write("Enter Password:");
+                        //string InputPassword = Console.ReadLine();
+                        //string passWord = "admin";
+                        //if (InputPassword == passWord)
+                        //{
+                        //    Console.WriteLine("Program is shutting down");
+                        //    retry = false;
+                        //    break;
+                        //}
+                        //else
+                        //{
+                        //    Console.WriteLine("Wrong username or password.");
+                        //    Thread.Sleep(3000);
+                        //    Console.Clear();
+                        //    break;
+                        //}
                     default:
                         Console.Clear();
                         retry = true;
@@ -82,39 +235,120 @@ namespace ArrayApplication
                 }
             }
         }
-
-        //Parkerar/lägger till ett fordon.
-        static void parkVehicle(string vehicle, string[] parkingSlots)
+        //Parkerar/lägger till ett fordon********************************
+        static void parkVehicleMC(int Type, string vehicle, string[] ParkingSlots)
         {
-            for (var i = 0; i < parkingSlots.Length; i++)
+            for (var y = 1; y < ParkingSlots.Length; y++)
             {
-                if (parkingSlots[i] == i + ".empty")
+                if (ParkingSlots[y].Substring(0, 6) == "EMPTY1")
                 {
-                    parkingSlots[i] = i + "." + vehicle;
+                    ParkingSlots[y] = ParkingSlots[y].Replace("EMPTY1", vehicle);
                     Console.Clear();
-                    Console.WriteLine("Your license plate is: {0}, continue to parkinglot nr: {1}", vehicle, i);
+                    Console.WriteLine("Vehicle with license nr: {0} is parked in slot:{1}", vehicle, y);
+                    Thread.Sleep(3000);
+                    Console.Clear();
+                    break;
+                }
+                else if (ParkingSlots[y].Length > 13 && ParkingSlots[y].Substring(13, 6) == "EMPTY2")
+                {
+                    ParkingSlots[y] = ParkingSlots[y].Replace("EMPTY2", vehicle);
+                    Console.Clear();
+                    Console.WriteLine("Vehicle with license nr: {0} is parked in slot:{1}", vehicle, y);
                     Thread.Sleep(3000);
                     Console.Clear();
                     break;
                 }
             }
         }
-                
-        //Hämtar ut ett fordon från parkeringsplatsen.
-        static void UnParkVehicle(string vehicleOut, string[] parkingSlots)
+        static void parkVehicle(int Type, string vehicle1, string[] ParkingSlots)
         {
-            int sum = 0;
-            for (var i = 0; i < parkingSlots.Length; i++)
+            for (var y = 1; y < ParkingSlots.Length; y++)
             {
-                if (parkingSlots[i] == i + "." + vehicleOut)
+                if (ParkingSlots[y] == "EMPTY1 ; EMPTY2")
                 {
-                    parkingSlots[i] = i + ".empty";
-                    Console.Clear();
+                    ParkingSlots[y] = ParkingSlots[y].Replace("EMPTY1 ; EMPTY2", vehicle1);
 
-                    Console.WriteLine("Your parking is ended, Welcome back!:", vehicleOut);
+                    Console.WriteLine("Vehicle with license nr: {0} is parked in slot:{1}", vehicle1, y);
                     Thread.Sleep(3000);
                     Console.Clear();
                     break;
+                }
+            }
+        }
+        //Hämtar ut ett fordon från parkeringsplatsen********************************
+        static void unParkVehicleMC(int Type1, string vehicle, string[] ParkingSlots)
+        {
+            for (var y = 1; y < ParkingSlots.Length; y++)
+            {
+                if (ParkingSlots[y].Substring(0, 10) == vehicle)
+                {
+                    ParkingSlots[y] = ParkingSlots[y].Replace(vehicle, "EMPTY1");
+                    Console.Clear();
+                    Console.WriteLine("Vehicle with license nr: {0}, Welcome back!", vehicle, y);
+                    Thread.Sleep(3000);
+                    Console.Clear();
+                    break;
+                }
+                else if (ParkingSlots[y].Length > 13 && ParkingSlots[y].Substring(13, 10) == vehicle)
+                {
+                    ParkingSlots[y] = ParkingSlots[y].Replace(vehicle, "EMPTY2");
+                    Console.Clear();
+                    Console.WriteLine("Vehicle with license nr: {0}, Welcome back!", vehicle, y);
+                    Thread.Sleep(3000);
+                    Console.Clear();
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Your license nr wasnt found, please try again.");
+                }
+            }
+        }
+        static void unParkVehicle(int Type1, string vehicle1, string[] ParkingSlots)
+        {
+            for (var y = 1; y < ParkingSlots.Length; y++)
+            {
+                if (ParkingSlots[y] == vehicle1)
+                {
+                    ParkingSlots[y] = ParkingSlots[y].Replace(vehicle1, "EMPTY1 ; EMPTY2");
+
+                    Console.WriteLine("Vehicle with license nr: {0}, Welcome back!", vehicle1);
+                    Thread.Sleep(3000);
+                    Console.Clear();
+                    break;
+                }
+            }
+        }
+        //Flyttar på ett fordon.
+        static void moveVehicle(string vehicleMove, string[] ParkingSlots)
+        {
+            Console.Clear();
+            int sum = 0;
+            for (var i = 0; i < ParkingSlots.Length; i++)
+            {
+                if (ParkingSlots[i] == vehicleMove)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Vehicle {0}, is parked at lot-nr: {1}", vehicleMove, i);
+                    Console.WriteLine("Enter witch parkingslotnumber to move vehicle: ");
+                    int moveNr = int.Parse(Console.ReadLine());
+                    if (ParkingSlots[moveNr] == "EMPTY1 ; EMPTY2")
+                    {
+                        ParkingSlots[i] = "EMPTY1 ; EMPTY2";
+                        ParkingSlots[moveNr] = vehicleMove;
+                        Console.Clear();
+                        Console.WriteLine("Vehicle is succesfully moved from lot-nr {1} to lot-nr {2}", vehicleMove, i, moveNr);
+                        Thread.Sleep(3000);
+                        Console.Clear();
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Lot-nr {0} is not empty, choose another lot.",moveNr);
+                        Thread.Sleep(3000);
+                        Console.Clear();
+                    }
+                    
                 }
                 else
                 {
@@ -122,71 +356,94 @@ namespace ArrayApplication
                 }
                 if (sum == 101)
                 {
-                    Console.Clear();
                     Console.WriteLine("No license plate matched");
                     Thread.Sleep(3000);
                     Console.Clear();
                 }
             }
-        }
 
-        //Flyttar på ett fordon.
-        static void moveVehicle()
-        {
-            Console.WriteLine("hej");
         }
-
-        //Söker efter valt registeringsnummer.
-        static void searchVehicle(string vehicleOut1, string[] ParkingSlots)
+        static void moveVehicleMC(string vehicleMove, string[] ParkingSlots)
         {
-            Console.Clear();
-            int sum = 0;
-            for (var i = 0; i < ParkingSlots.Length; i++)
+
+            for (var y = 1; y < ParkingSlots.Length; y++)
             {
-                if (ParkingSlots[i] == i + "." + vehicleOut1)
+                if (ParkingSlots[y].Substring(0, 10) == vehicleMove)
                 {
-                    Console.WriteLine("Your vehicle with plate number {0}, is placed in parking lot nr: {1}", vehicleOut1, i);
-                    Thread.Sleep(3000);
-                    Console.Clear();
-                    break;
+                    ParkingSlots[y] = ParkingSlots[y].Replace(vehicleMove, "EMPTY1");
+                    Console.WriteLine("Enter witch parkingslotnumber to move vehicle: ");
+                    int moveNr = int.Parse(Console.ReadLine());
+                    if (ParkingSlots[moveNr] == "EMPTY1 ; EMPTY2")
+                    {
+                        ParkingSlots[moveNr] = ParkingSlots[moveNr].Replace("EMPTY1", vehicleMove);
+                        Console.WriteLine("Vehicle is succesfully moved from lot-nr {0} to lot-nr {1}", moveNr, vehicleMove);
+                        Thread.Sleep(3000);
+                        Console.Clear();
+                        break;
+                    }
                 }
                 else
                 {
-                    sum++;
+                    Console.WriteLine("There is a vechicle here, try another.");
                 }
-                if(sum == 101)
+            }
+        }
+        //Söker efter valt registeringsnummer. ********************************
+        static void searchVehicle(string vehicleS, string[] ParkingSlots)
+        {
+            int sum = 0;
+            for (var y = 1; y < ParkingSlots.Length; y++)
+            {
+                if (ParkingSlots[y].Contains(vehicleS))
                 {
-                    Console.WriteLine("No license plate matched");
+                    Console.Clear();
+                    Console.WriteLine("Vehicle with license nr: {0}, is parked int slot:{1}", vehicleS, y);
+                    Thread.Sleep(3000);
+                    Console.Clear();
+                    sum++;
+                    break;
+                }
+            }
+               if(sum == 0)
+                {
+                    Console.Clear();
+                    Console.WriteLine("No license number matched");
                     Thread.Sleep(3000);
                     Console.Clear();
                 }
             }
-        }
-
         //Kollar antal lediga platser.
         static void checkSlots(string[] ParkingSlots)
         {
-            int totalLots = 100;
-            int freeLots = 0;
-            for (var x = 0; x < ParkingSlots.Length; x++)
+            int Total = 100;
+            int freeSlots = 0;
+            for (var y = 1; y < ParkingSlots.Length; y++)
             {
-                if (ParkingSlots[x] == x + ".empty")
+                if (ParkingSlots[y] == "EMPTY1 ; EMPTY2")
                 {
-                    Console.WriteLine(ParkingSlots[x]);
-                    freeLots++;
+                    freeSlots++;
                 }
                 else
                 {
-                    Console.WriteLine(ParkingSlots[x]);
+
                 }
             }
             Console.Clear();
-            Console.WriteLine("There is {0} free spots out of {1} availble spots.", freeLots, totalLots);
+            Console.WriteLine("{0} free parkings out of {1}.", freeSlots, Total);
             Thread.Sleep(3000);
             Console.Clear();
         }
+        static void ShowAll(string[] ParkingSlots)
+            {
+            for (var x = 0; x < ParkingSlots.Length; x++)
+            {
+                Console.WriteLine(ParkingSlots[x]);
+            }
+            Thread.Sleep(5000);
+            Console.Clear();
 
 
+        }
     }
 }
 
