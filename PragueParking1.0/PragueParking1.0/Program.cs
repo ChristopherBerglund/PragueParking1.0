@@ -251,10 +251,12 @@ namespace ArrayApplication
         //Parkerar/lägger till ett fordon********************************
         static void parkVehicleMC(int Type, string vehicle, string[] ParkingSlots)
         {
+            int sum = 0;
             for (var y = 1; y < ParkingSlots.Length; y++)
             {
                 if (ParkingSlots[y].Substring(0, 6) == "EMPTY1")
                 {
+                    sum++;
                     ParkingSlots[y] = ParkingSlots[y].Replace("EMPTY1", vehicle);
                     Console.Clear();
                     Console.WriteLine("MC with license nr: {0} is parked in slot:{1}", vehicle, y);
@@ -264,6 +266,7 @@ namespace ArrayApplication
                 }
                 else if (ParkingSlots[y].Length > 13 && ParkingSlots[y].Substring(13, 6) == "EMPTY2")
                 {
+                    sum++;
                     ParkingSlots[y] = ParkingSlots[y].Replace("EMPTY2", vehicle);
                     Console.Clear();
                     Console.WriteLine("MC with license nr: {0} is parked in slot:{1}", vehicle, y);
@@ -271,18 +274,17 @@ namespace ArrayApplication
                     Console.Clear();
                     break;
                 }
-                //else
-                //{
-                //    Console.WriteLine("Parking lot is full, please try later.");
-                //}
             }
+            if (sum == 0){Console.WriteLine("Parking lot is full, please try later.");}
         }
         static void parkVehicle(int Type, string vehicle1, string[] ParkingSlots)
         {
+            int sum = 0;
             for (var y = 1; y < ParkingSlots.Length; y++)
             {
                 if (ParkingSlots[y] == "EMPTY1 ; EMPTY2")
                 {
+                    sum++;
                     ParkingSlots[y] = ParkingSlots[y].Replace("EMPTY1 ; EMPTY2", vehicle1);
                     Console.Clear();
                     Console.WriteLine("Car with license nr: {0} is parked in slot:{1}", vehicle1, y);
@@ -290,11 +292,8 @@ namespace ArrayApplication
                     Console.Clear();
                     break;
                 }
-                //else
-                //{
-                //    Console.WriteLine("Parking lot is full, please try later.");
-                //}
             }
+            if (sum == 0){Console.WriteLine("Parking lot is full, please try later.");}
         }
         //Hämtar ut ett fordon från parkeringsplatsen********************************
         static void unParkVehicleMC(int Type1, string vehicle, string[] ParkingSlots)
@@ -502,7 +501,7 @@ namespace ArrayApplication
                 }
                 else if(ParkingSlots[x].Length < 11)
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(ParkingSlots[x]);
                 }
                 else if (ParkingSlots[x].Length > 19)
