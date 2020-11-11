@@ -11,18 +11,15 @@ namespace ArrayApplication
         {
 
 
-            /*****************************************************/
+            //**Lösenord för att avsluta programmet: admin 
+
             //Programmet använder Threading, så efter avslutad metod/text, tar det mellan 3-5 sekunder innan
             //programmet går vidare alt återgår till huvudmenyn, detta för att användaren aldrig ska fastna.
 
-            //PROBLEM! Programmet har problem att flytta/ta ut "1 MC ; 2 MC", om man tar ut/flyttar MC1 först, krackilerar
-            //programmet, tar man ut i omvänd ordning, fungerar det... dvs "2 MC" sen "1 MC".
-            /*****************************************************/
+      
 
+            //Skapar en lista med 100 platser.
 
-
-
-            //Skapar en lista med 100 platser. 
             string[] ParkingSlots = new string[101]; { };
             for (var i = 1; i < 101; i++)
             {
@@ -211,8 +208,8 @@ namespace ArrayApplication
                             Console.Clear();
                             break;
                         }
-        //Se tillgänglighet i parkeringshus.
-                    case 5:
+                    
+                    case 5: //Se tillgänglighet i parkeringshus.
                         Console.Clear();
                         checkSlots(ParkingSlots);
                         break;
@@ -222,24 +219,22 @@ namespace ArrayApplication
                         break;
                     case 7:
                         Console.Clear();
-                        retry = false;
-                        break;
-                        //Console.Write("Enter Password:");
-                        //string InputPassword = Console.ReadLine();
-                        //string passWord = "admin";
-                        //if (InputPassword == passWord)
-                        //{
-                        //    Console.WriteLine("Program is shutting down");
-                        //    retry = false;
-                        //    break;
-                        //}
-                        //else
-                        //{
-                        //    Console.WriteLine("Wrong username or password.");
-                        //    Thread.Sleep(3000);
-                        //    Console.Clear();
-                        //    break;
-                        //}
+                        Console.Write("Enter Password:");
+                        string InputPassword = Console.ReadLine();
+                        string passWord = "admin";
+                        if (InputPassword == passWord)
+                        {
+                            Console.WriteLine("Program is shutting down");
+                            retry = false;
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Wrong username or password.");
+                            Thread.Sleep(3000);
+                            Console.Clear();
+                            break;
+                        }
                     default:
                         Console.Clear();
                         retry = true;
@@ -471,7 +466,6 @@ namespace ArrayApplication
                     }
                 }
             }
-        
         //Söker efter valt registeringsnummer. ********************************
         static void searchVehicle(string vehicleS, string[] ParkingSlots)
         {
