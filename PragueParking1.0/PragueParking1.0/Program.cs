@@ -376,7 +376,6 @@ namespace ArrayApplication
                         Thread.Sleep(3000);
                         Console.Clear();
                     }
-                    
                 }
                 else
                 {
@@ -389,25 +388,20 @@ namespace ArrayApplication
                     Console.Clear();
                 }
             }
-
         }
         static void moveVehicleMC(string vehicleMove, string[] ParkingSlots)
         {
-            try
-            {
-
-       
-            int sum = 0;
-            for (var y = 1; y < ParkingSlots.Length; y++)
-            {
-                if (ParkingSlots[y].Substring(0, 10) == vehicleMove)
+                int sum = 0;
+                for (var y = 1; y < ParkingSlots.Length; y++)
                 {
-                    sum++;
-                    ParkingSlots[y] = ParkingSlots[y].Replace(vehicleMove, "EMPTY1");
-                    Console.Clear();
-                    Console.WriteLine("Vehicle {0}, is parked at lot-nr: {1}", vehicleMove, y);
-                    break;
-                }
+                    if (ParkingSlots[y].Substring(0, 10) == vehicleMove)
+                    {
+                        sum++;
+                        ParkingSlots[y] = ParkingSlots[y].Replace(vehicleMove, "EMPTY1");
+                        Console.Clear();
+                        Console.WriteLine("Vehicle {0}, is parked at lot-nr: {1}", vehicleMove, y);
+                        break;
+                    }
                     else if (ParkingSlots[y].Length > 13 && ParkingSlots[y].Substring(9, 10) == vehicleMove)
                     {
                         sum++;
@@ -417,37 +411,40 @@ namespace ArrayApplication
                         break;
                     }
                     else if (ParkingSlots[y].Length > 13 && ParkingSlots[y].Substring(13, 10) == vehicleMove)
-                {
-                    sum++;
-                    ParkingSlots[y] = ParkingSlots[y].Replace(vehicleMove, "EMPTY2");
-                    Console.Clear();
-                    Console.WriteLine("Vehicle {0}, is parked at lot-nr: {1}!", vehicleMove, y);
-                    break;
+                    {
+                        sum++;
+                        ParkingSlots[y] = ParkingSlots[y].Replace(vehicleMove, "EMPTY2");
+                        Console.Clear();
+                        Console.WriteLine("Vehicle {0}, is parked at lot-nr: {1}!", vehicleMove, y);
+                        break;
+                    }
+                    else
+                    {
+
+                    }
+
                 }
-                else { }
-             
-            }
-            if(sum == 0)
-            {
-                Console.WriteLine("License number: {0} didnt match, try again.");
-            }
-
-            
-            Console.WriteLine("Enter parkingslotnumber to move vehicle: ");
-            int moveNr = int.Parse(Console.ReadLine());
-
-
-            for (var y = 1; y < ParkingSlots.Length; y++)
-            {
-                if (ParkingSlots[moveNr].Substring(0, 6) == "EMPTY1")
+                if (sum == 0)
                 {
-                    ParkingSlots[moveNr] = ParkingSlots[moveNr].Replace("EMPTY1", vehicleMove);
-                    Console.Clear();
-                    Console.WriteLine("Car is succesfully moved from lot-nr {0} to lot-nr {1}", vehicleMove, moveNr);
-                    Thread.Sleep(3000);
-                    Console.Clear();
-                    break;
+                    Console.WriteLine("License number: {0} didnt match, try again.");
                 }
+
+
+                Console.WriteLine("Enter parkingslotnumber to move vehicle: ");
+                int moveNr = int.Parse(Console.ReadLine());
+
+
+                for (var y = 1; y < ParkingSlots.Length; y++)
+                {
+                    if (ParkingSlots[moveNr].Substring(0, 6) == "EMPTY1")
+                    {
+                        ParkingSlots[moveNr] = ParkingSlots[moveNr].Replace("EMPTY1", vehicleMove);
+                        Console.Clear();
+                        Console.WriteLine("Car is succesfully moved from lot-nr {0} to lot-nr {1}", vehicleMove, moveNr);
+                        Thread.Sleep(3000);
+                        Console.Clear();
+                        break;
+                    }
                     else if (ParkingSlots[moveNr].Length > 13 && ParkingSlots[moveNr].Substring(9, 6) == "EMPTY2")
                     {
                         ParkingSlots[moveNr] = ParkingSlots[moveNr].Replace("EMPTY2", vehicleMove);
@@ -458,27 +455,23 @@ namespace ArrayApplication
                         break;
                     }
                     else if (ParkingSlots[moveNr].Length > 13 && ParkingSlots[moveNr].Substring(13, 6) == "EMPTY2")
-                {
-                    ParkingSlots[moveNr] = ParkingSlots[moveNr].Replace("EMPTY2", vehicleMove);
-                    Console.Clear();
-                    Console.WriteLine("Car is succesfully moved from lot-nr {0} to lot-nr {1}", vehicleMove, moveNr);
-                    Thread.Sleep(3000);
-                    Console.Clear();
-                    break;
+                    {
+                        ParkingSlots[moveNr] = ParkingSlots[moveNr].Replace("EMPTY2", vehicleMove);
+                        Console.Clear();
+                        Console.WriteLine("Car is succesfully moved from lot-nr {0} to lot-nr {1}", vehicleMove, moveNr);
+                        Thread.Sleep(3000);
+                        Console.Clear();
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Lot-nr {0} is not empty, choose another lot.", vehicleMove);
+                        Thread.Sleep(3000);
+                        Console.Clear();
+                    }
                 }
-                //else
-                //{
-                //    Console.WriteLine("There is already a vehicle at this spot");
-                //}
             }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("You cant move this vehicle.");
-            }
-
-
-        }
+        
         //Söker efter valt registeringsnummer. ********************************
         static void searchVehicle(string vehicleS, string[] ParkingSlots)
         {
@@ -514,13 +507,9 @@ namespace ArrayApplication
                 {
                     freeSlots++;
                 }
-                else
-                {
-
-                }
             }
             Console.Clear();
-            Console.WriteLine("{0} free parkingsspots out of {1}.", freeSlots, Total);
+            Console.WriteLine("{0} free parkingslots out of {1}.", freeSlots, Total);
             Thread.Sleep(3000);
             Console.Clear();
         }
@@ -528,7 +517,7 @@ namespace ArrayApplication
             {
             for (var x = 1; x < ParkingSlots.Length; x++)
             {
-                if(ParkingSlots[x].Contains("EMPTY1"))
+                if(ParkingSlots[x].Contains("EMPTY1 ; EMPTY2"))
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine(ParkingSlots[x]);
