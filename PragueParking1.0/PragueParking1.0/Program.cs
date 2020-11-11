@@ -284,7 +284,7 @@ namespace ArrayApplication
                 if (ParkingSlots[y] == "EMPTY1 ; EMPTY2")
                 {
                     ParkingSlots[y] = ParkingSlots[y].Replace("EMPTY1 ; EMPTY2", vehicle1);
-
+                    Console.Clear();
                     Console.WriteLine("Car with license nr: {0} is parked in slot:{1}", vehicle1, y);
                     Thread.Sleep(3000);
                     Console.Clear();
@@ -493,11 +493,32 @@ namespace ArrayApplication
         }
         static void ShowAll(string[] ParkingSlots)
             {
-            for (var x = 0; x < ParkingSlots.Length; x++)
+            for (var x = 1; x < ParkingSlots.Length; x++)
             {
-                Console.WriteLine(ParkingSlots[x]);
+                if(ParkingSlots[x].Contains("EMPTY1"))
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine(ParkingSlots[x]);
+                }
+                else if(ParkingSlots[x].Length < 11)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine(ParkingSlots[x]);
+                }
+                else if (ParkingSlots[x].Length > 19)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(ParkingSlots[x]);
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine(ParkingSlots[x]);
+                }
+                
             }
-            Thread.Sleep(5000);
+            Console.ForegroundColor = ConsoleColor.White;
+            Thread.Sleep(3000);
             Console.Clear();
 
 
