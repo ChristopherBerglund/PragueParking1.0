@@ -9,6 +9,19 @@ namespace ArrayApplication
     {
         static public void Main()
         {
+
+
+
+            //Programmet använder Threading, så efter avslutad metod/text, tar det mellan 3-5 sekunder innan
+            //programmet går vidare alt återgår till huvudmenyn, detta för att användaren aldrig ska fastna.
+
+            //PROBLEM! Programmet har problem att flytta/ta ut "1 MC ; 2 MC", om man tar ut/flyttar MC1 först, krackilerar
+            //programmet, tar man ut i omvänd ordning, fungerar det...
+
+
+
+
+
             //Skapar en lista med 100 platser. 
             string[] ParkingSlots = new string[101]; { };
             for (var i = 1; i < 101; i++)
