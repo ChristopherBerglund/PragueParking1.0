@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PragueParking1.0", "PragueParking1.0\PragueParking1.0.csproj", "{A05F014A-5C64-4079-9071-1C4C7F7E9C71}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kladd", "Kladd\Kladd.csproj", "{33C0D370-D60C-44A3-9FC1-1F601059049C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,5 +15,9 @@ Global
 		{A05F014A-5C64-4079-9071-1C4C7F7E9C71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A05F014A-5C64-4079-9071-1C4C7F7E9C71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A05F014A-5C64-4079-9071-1C4C7F7E9C71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33C0D370-D60C-44A3-9FC1-1F601059049C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33C0D370-D60C-44A3-9FC1-1F601059049C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33C0D370-D60C-44A3-9FC1-1F601059049C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33C0D370-D60C-44A3-9FC1-1F601059049C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

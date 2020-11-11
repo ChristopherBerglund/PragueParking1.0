@@ -1,0 +1,12 @@
+/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/Kladd/bin/Debug/netcoreapp3.1/Kladd.deps.json
+/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/Kladd/bin/Debug/netcoreapp3.1/Kladd.runtimeconfig.json
+/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/Kladd/bin/Debug/netcoreapp3.1/Kladd.runtimeconfig.dev.json
+/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/Kladd/bin/Debug/netcoreapp3.1/Kladd.dll
+/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/Kladd/bin/Debug/netcoreapp3.1/Kladd.pdb
+/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/Kladd/obj/Debug/netcoreapp3.1/Kladd.csprojAssemblyReference.cache
+/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/Kladd/obj/Debug/netcoreapp3.1/Kladd.AssemblyInfoInputs.cache
+/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/Kladd/obj/Debug/netcoreapp3.1/Kladd.AssemblyInfo.cs
+/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/Kladd/obj/Debug/netcoreapp3.1/Kladd.csproj.CoreCompileInputs.cache
+/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/Kladd/obj/Debug/netcoreapp3.1/Kladd.dll
+/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/Kladd/obj/Debug/netcoreapp3.1/Kladd.pdb
+/Users/chris/Documents/GitHub/PragueParking1.0/PragueParking1.0/Kladd/obj/Debug/netcoreapp3.1/Kladd.genruntimeconfig.cache
