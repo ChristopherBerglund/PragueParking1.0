@@ -16,6 +16,8 @@ namespace ArrayApplication
             //Programmet använder Threading, så efter avslutad metod/text, tar det mellan 3-5 sekunder innan
             //programmet går vidare alt återgår till huvudmenyn, detta för att användaren aldrig ska fastna.
 
+            //Skulle jag gjort detta program igen, hade jag använt 
+
       
 
             //Skapar en lista med 100 platser.
@@ -355,7 +357,7 @@ namespace ArrayApplication
                     Console.WriteLine("Vehicle {0}, is parked at lot-nr: {1}", vehicleMove, i);
                     Console.WriteLine("Enter witch parkingslotnumber to move vehicle: ");
                     int moveNr = int.Parse(Console.ReadLine());
-                    if (ParkingSlots[moveNr] == "EMPTY1 ; EMPTY2")
+                    if (ParkingSlots[moveNr] == "EMPTY1 ; EMPTY2" && moveNr < 101)
                     {
                         ParkingSlots[i] = "EMPTY1 ; EMPTY2";
                         ParkingSlots[moveNr] = vehicleMove;
@@ -367,7 +369,7 @@ namespace ArrayApplication
                     }
                     else
                     {
-                        Console.WriteLine("Lot-nr {0} is not empty, choose another lot.",moveNr);
+                        Console.WriteLine("Lot-nr {0} is not empty, choose another lot. (Or your number is over 100)",moveNr);
                         Thread.Sleep(3000);
                         Console.Clear();
                     }
@@ -431,7 +433,7 @@ namespace ArrayApplication
 
                 for (var y = 1; y < ParkingSlots.Length; y++)
                 {
-                    if (ParkingSlots[moveNr].Substring(0, 6) == "EMPTY1")
+                    if (ParkingSlots[moveNr].Substring(0, 6) == "EMPTY1" && moveNr < 101)
                     {
                         ParkingSlots[moveNr] = ParkingSlots[moveNr].Replace("EMPTY1", vehicleMove);
                         Console.Clear();
@@ -440,7 +442,7 @@ namespace ArrayApplication
                         Console.Clear();
                         break;
                     }
-                    else if (ParkingSlots[moveNr].Length > 13 && ParkingSlots[moveNr].Substring(9, 6) == "EMPTY2")
+                    else if (ParkingSlots[moveNr].Length > 13 && ParkingSlots[moveNr].Substring(9, 6) == "EMPTY2" && moveNr < 101)
                     {
                         ParkingSlots[moveNr] = ParkingSlots[moveNr].Replace("EMPTY2", vehicleMove);
                         Console.Clear();
@@ -449,7 +451,7 @@ namespace ArrayApplication
                         Console.Clear();
                         break;
                     }
-                    else if (ParkingSlots[moveNr].Length > 13 && ParkingSlots[moveNr].Substring(13, 6) == "EMPTY2")
+                    else if (ParkingSlots[moveNr].Length > 13 && ParkingSlots[moveNr].Substring(13, 6) == "EMPTY2" && moveNr < 101)
                     {
                         ParkingSlots[moveNr] = ParkingSlots[moveNr].Replace("EMPTY2", vehicleMove);
                         Console.Clear();
@@ -460,7 +462,7 @@ namespace ArrayApplication
                     }
                     else
                     {
-                        Console.WriteLine("Lot-nr {0} is not empty, choose another lot.", vehicleMove);
+                        Console.WriteLine("Lot-nr {0} is not empty, choose another lot.(Or your number is over 100)", vehicleMove);
                         Thread.Sleep(3000);
                         Console.Clear();
                     }
