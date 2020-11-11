@@ -11,13 +11,13 @@ namespace ArrayApplication
         {
 
 
-
+            /*****************************************************/
             //Programmet använder Threading, så efter avslutad metod/text, tar det mellan 3-5 sekunder innan
             //programmet går vidare alt återgår till huvudmenyn, detta för att användaren aldrig ska fastna.
 
             //PROBLEM! Programmet har problem att flytta/ta ut "1 MC ; 2 MC", om man tar ut/flyttar MC1 först, krackilerar
             //programmet, tar man ut i omvänd ordning, fungerar det... dvs "2 MC" sen "1 MC".
-
+            /*****************************************************/
 
 
 
@@ -486,7 +486,7 @@ namespace ArrayApplication
                 }
             }
             Console.Clear();
-            Console.WriteLine("{0} free parkings out of {1}.", freeSlots, Total);
+            Console.WriteLine("{0} free parkingsspots out of {1}.", freeSlots, Total);
             Thread.Sleep(3000);
             Console.Clear();
         }
@@ -517,6 +517,8 @@ namespace ArrayApplication
                 
             }
             Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine();
+            Console.WriteLine("Scroll up !");
             Thread.Sleep(3000);
             Console.Clear();
 
