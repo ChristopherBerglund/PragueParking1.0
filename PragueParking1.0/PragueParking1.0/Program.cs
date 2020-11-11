@@ -16,7 +16,7 @@ namespace ArrayApplication
             //programmet går vidare alt återgår till huvudmenyn, detta för att användaren aldrig ska fastna.
 
             //PROBLEM! Programmet har problem att flytta/ta ut "1 MC ; 2 MC", om man tar ut/flyttar MC1 först, krackilerar
-            //programmet, tar man ut i omvänd ordning, fungerar det...
+            //programmet, tar man ut i omvänd ordning, fungerar det... dvs "2 MC" sen "1 MC".
 
 
 
@@ -47,7 +47,7 @@ namespace ArrayApplication
                 Console.WriteLine("7. Exit program (Admin only)");
                 Console.WriteLine();
                 Console.WriteLine("Choose a number and press \"enter\" for the desired selection:");
-                string Hej = Console.ReadLine();int userChoice;Int32.TryParse(Hej, out userChoice);
+                string input = Console.ReadLine();int userChoice;Int32.TryParse(input, out userChoice);
 
                 //Användarens val går till switchEn.
                 switch (userChoice)
