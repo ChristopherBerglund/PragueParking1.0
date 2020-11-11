@@ -1,21 +1,12 @@
-﻿<Properties StartupConfiguration="{94B31C4F-94FB-46AE-A266-7C96CB20814B}|Default">
-  <MonoDevelop.Ide.ItemProperties.Ovning PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.ItemProperties.Kladd2 PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Kladd2/Program.cs">
+﻿<Properties StartupConfiguration="{A05F014A-5C64-4079-9071-1C4C7F7E9C71}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PragueParking1.0/Program.cs">
     <Files>
-      <File FileName="Kladd2/Program.cs" Line="136" Column="1" />
-      <File FileName="Ovning/Program.cs" />
-      <File FileName="PragueParking1.0/Program.cs" />
+      <File FileName="PragueParking1.0/Program.cs" Line="11" Column="10" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="PragueParking1.0" expanded="True">
-            <Node name="Kladd1" expanded="True" />
-            <Node name="Kladd2" expanded="True">
-              <Node name="Program.cs" selected="True" />
-            </Node>
-            <Node name="Ovning" expanded="True" />
             <Node name="PragueParking1.0" expanded="True" />
           </Node>
         </State>
