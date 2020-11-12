@@ -11,14 +11,16 @@ namespace ArrayApplication
         {
 
 
+            ////////////////////////////////////////////////////////////////////////
+
             //**Lösenord för att avsluta programmet: admin 
 
             //Programmet använder Threading, så efter avslutad metod/text, tar det mellan 3-5 sekunder innan
             //programmet går vidare alt återgår till huvudmenyn, detta för att användaren aldrig ska fastna.
 
-            //Skulle jag gjort detta program igen, hade jag använt 
+            ////////////////////////////////////////////////////////////////////////
+            
 
-      
 
             //Skapar en lista med 100 platser.
 
@@ -413,7 +415,6 @@ namespace ArrayApplication
                     {
                         if (ParkingSlots[y].Substring(0, 10) == vehicleMove)
                         {
-
                             ParkingSlots[y] = ParkingSlots[y].Replace(vehicleMove, "EMPTY1");
                             Console.Clear();
                             Console.WriteLine("Vehicle {0}, is parked at lot-nr: {1}", vehicleMove, y);
@@ -421,7 +422,6 @@ namespace ArrayApplication
                         }
                         else if (ParkingSlots[y].Length > 13 && ParkingSlots[y].Substring(9, 10) == vehicleMove)
                         {
-
                             ParkingSlots[y] = ParkingSlots[y].Replace(vehicleMove, "EMPTY2");
                             Console.Clear();
                             Console.WriteLine("Vehicle {0}, is parked at lot-nr: {1}!", vehicleMove, y);
@@ -429,26 +429,22 @@ namespace ArrayApplication
                         }
                         else if (ParkingSlots[y].Length > 13 && ParkingSlots[y].Substring(13, 10) == vehicleMove)
                         {
-
                             ParkingSlots[y] = ParkingSlots[y].Replace(vehicleMove, "EMPTY2");
                             Console.Clear();
                             Console.WriteLine("Vehicle {0}, is parked at lot-nr: {1}!", vehicleMove, y);
                             break;
                         }
                     }
-                    else
-                    {
-                        sum++;
-                    }
+                    else{sum++;}
                 }
                      if (sum != 0)
-                        {
+                     {
                         Console.Clear();
                         Console.WriteLine("No license number matched");
                         Thread.Sleep(3000);
                         Console.Clear();
                         return;
-                        }
+                     }
 
             Console.WriteLine("Enter parkingslotnumber to move vehicle: ");
                 int moveNr = int.Parse(Console.ReadLine());
@@ -530,7 +526,7 @@ namespace ArrayApplication
         }
         static void ShowAll(string[] ParkingSlots)
             {
-            Console.WriteLine("Scroll all the way down !");
+            Console.WriteLine("Scroll all the way down ! (To get back to meny) ");
             Console.WriteLine();
             for (var x = 1; x < ParkingSlots.Length; x++)
             {
