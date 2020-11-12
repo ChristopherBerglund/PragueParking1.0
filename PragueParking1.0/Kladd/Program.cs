@@ -6,7 +6,14 @@ namespace Kladd
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+           string[] ParkingLots = new string[101];
+            { };
+
+            for (var i = 1; i < 101; i++)
+            {
+                ParkingLots[i] = "EMPTY1 ; EMPTY2";
+                Console.WriteLine(ParkingLots[i]);
+            }
         }
     }
 }
