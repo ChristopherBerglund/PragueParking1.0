@@ -520,7 +520,40 @@ namespace ArrayApplication
             }
             Console.Clear();
             Console.WriteLine("{0} free parking lots out of {1}.", freeSlots, Total);
-            Thread.Sleep(3000);
+            Console.WriteLine();
+
+            int bil = 0;
+            int MC = 0;
+            int Tom = 0;
+
+            for(var x = 1; x < ParkingSlots.Length; x++)
+            {
+                if (ParkingSlots[x].Length == 15)
+                {
+                    Tom++;
+                }
+                else if (ParkingSlots[x].Length == 10)
+                {
+                    bil++;
+                }
+                else if (ParkingSlots[x].Length == 19)
+                {
+                    MC++;
+                }
+                else if (ParkingSlots[x].Length == 23)
+                {
+                    MC++;
+                    MC++;
+                }
+                else
+                {
+                    
+                }
+               
+
+            }
+            Console.WriteLine(" Car: {0}\n MC: {1}", bil, MC);
+            Thread.Sleep(4000);
             Console.Clear();
         }
         static void ShowAll(string[] ParkingSlots)
