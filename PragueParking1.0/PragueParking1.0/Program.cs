@@ -9,8 +9,6 @@ namespace ArrayApplication
     {
         static public void Main()
         {
-
-
             ////////////////////////////////////////////////////////////////////////
 
             //** Lösenord för att avsluta programmet: admin 
@@ -20,9 +18,6 @@ namespace ArrayApplication
 
             ////////////////////////////////////////////////////////////////////////
 
-
-
-            //Skapar en lista med 100 platser.
             Console.ForegroundColor = ConsoleColor.White;
             string[] ParkingSlots = new string[101]; { };
             for (var i = 1; i < 101; i++)
@@ -31,9 +26,8 @@ namespace ArrayApplication
             }
 
             bool retry = true;
-            while (retry)   //Om användaren ger ett felaktigt val, börjar programmet om.
+            while (retry)   
             {
-                //Användare-meny.
                 Console.Clear();
                 Console.WriteLine("Welcome to Prague Parking");
                 Console.WriteLine();
@@ -49,8 +43,6 @@ namespace ArrayApplication
                 Console.WriteLine();
                 Console.WriteLine("Choose a number and press \"enter\" for the desired selection:");
                 string input = Console.ReadLine();int userChoice;Int32.TryParse(input, out userChoice);
-
-                //Användarens val går till switchEn.
                 switch (userChoice)
                 {
                     case 1: //Parkera Fordon.
@@ -265,7 +257,6 @@ namespace ArrayApplication
                 }
             }
         }
-        //Parkerar/lägger till ett fordon********************************
         static void parkVehicleMC(int Type, string vehicle, string[] ParkingSlots)
         {
             int sum = 0;
@@ -333,7 +324,6 @@ namespace ArrayApplication
                 Console.Clear();
             }
         }
-        //Hämtar ut ett fordon från parkeringsplatsen********************************
         static void unParkVehicleMC(int Type1, string vehicle, string[] ParkingSlots)
         {
             int sum = 0;
@@ -404,7 +394,6 @@ namespace ArrayApplication
                 Console.Clear();
             }
         }
-        //Flyttar på ett fordon.
         static void moveVehicle(string vehicleMove, string[] ParkingSlots)
         {
             Console.Clear();
@@ -514,7 +503,6 @@ namespace ArrayApplication
                     return;
                 }
             }
-        //Söker efter valt registeringsnummer. ********************************
         static void searchVehicle(string vehicleS, string[] ParkingSlots)
         {
             int sum = 0;
@@ -542,7 +530,6 @@ namespace ArrayApplication
                     Console.Clear();
                 }
             }
-        //Kollar antal lediga platser.
         static void checkSlots(string[] ParkingSlots)
         {
             int Total = 100;
@@ -588,6 +575,15 @@ namespace ArrayApplication
         }
         static void ShowAll(string[] ParkingSlots)
             {
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("100% empty");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("50% empty");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("0% empty");
+            Console.ForegroundColor = ConsoleColor.White;
+
             Console.WriteLine("Scroll all the way down ! (To get back to meny) ");
             Console.WriteLine();
             for (var x = 1; x < ParkingSlots.Length; x++)
