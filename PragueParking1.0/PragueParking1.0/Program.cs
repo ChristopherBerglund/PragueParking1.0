@@ -33,7 +33,8 @@ namespace ArrayApplication
             bool retry = true;
             while (retry)   //Om användaren ger ett felaktigt val, börjar programmet om.
             {
-                //Användare-meny.            Console.Clear();
+                //Användare-meny.
+                Console.Clear();
                 Console.WriteLine("Welcome to Prague Parking");
                 Console.WriteLine();
                 Console.WriteLine("1. Park vehicle");
