@@ -53,7 +53,7 @@ namespace ArrayApplication
                         if (Type == 2)//Parkera Bil, kontrollera att regnummer inte redan finns i systemet. 
                         {
                             Console.Clear();
-                            Console.WriteLine("Enter your 6 letter license number number:");
+                            Console.WriteLine("Enter your license number:");
                             string vehicle = Console.ReadLine().ToUpper();
                             int sum = 0;
                             for(var i=1; i < ParkingSlots.Length; i++)
@@ -78,7 +78,7 @@ namespace ArrayApplication
                         else if (Type == 1) //Parkera MC
                         {
                             Console.Clear();
-                            Console.WriteLine("Enter your 6 letter license number:");
+                            Console.WriteLine("Enter your license number:");
                             string vehicle1 = Console.ReadLine().ToUpper();
                             int sum = 0;
                             for (var i = 1; i < ParkingSlots.Length; i++)
@@ -122,7 +122,7 @@ namespace ArrayApplication
                         if (Type1 == 2)//Avparkera bil.
                         {
                             Console.Clear();
-                            Console.WriteLine("Enter your 6 letter license number:");
+                            Console.WriteLine("Enter your license number:");
                             string vehicle = Console.ReadLine().ToUpper();
                             if (vehicle.Length == 6)
                             {
@@ -143,7 +143,7 @@ namespace ArrayApplication
                         else if (Type1 == 1) //Avparkera MC.
                         {
                             Console.Clear();
-                            Console.WriteLine("Enter your 6 letter license number:");
+                            Console.WriteLine("Enter your license number:");
                             string vehicle1 = Console.ReadLine().ToUpper();
                             if (vehicle1.Length == 6)
                             {
@@ -204,7 +204,7 @@ namespace ArrayApplication
                         }
                     case 4: //Sök efter fordon.
                         Console.Clear();
-                        Console.WriteLine("Enter your 6 letter license number:");
+                        Console.WriteLine("Enter your license number:");
                         string vehicleS = Console.ReadLine().ToUpper();
                         if (vehicleS.Length == 6)
                         {
