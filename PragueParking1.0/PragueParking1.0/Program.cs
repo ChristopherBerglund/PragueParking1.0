@@ -25,6 +25,7 @@ namespace ArrayApplication
                 ParkingSlots[i] = "EMPTY1 ; EMPTY2";
             }
 
+            
             bool retry = true;
             while (retry)   
             {
@@ -48,72 +49,52 @@ namespace ArrayApplication
                     case 1: //Parkera Fordon.
                         Console.Clear();
                         Console.WriteLine("Enter: 1. Car | 2. MC");
-                        string typ = Console.ReadLine().ToUpper();int Type;Int32.TryParse(typ, out Type);
+                        string typ = Console.ReadLine().ToUpper(); int Type; Int32.TryParse(typ, out Type);
 
-                        if (Type == 2)//Parkera Bil, kontrollera att regnummer inte redan finns i systemet. 
+                        Console.Clear();
+                        Console.WriteLine("Enter your license number:");
+                        string vehicle = Console.ReadLine().ToUpper();
+                        int sum = 0;
+                        for (var i = 1; i < ParkingSlots.Length; i++)
                         {
-                            Console.Clear();
-                            Console.WriteLine("Enter your license number:");
-                            string vehicle = Console.ReadLine().ToUpper();
-                            int sum = 0;
-                            for(var i=1; i < ParkingSlots.Length; i++)
-                            {if (ParkingSlots[i].Contains(vehicle)){sum++;}}
-
-                            if (vehicle.Length == 6 && sum == 0)
+                            if (ParkingSlots[i].Contains(vehicle))
                             {
-                                parkVehicleMC(Type, vehicle, ParkingSlots);
-                                break;
-                            }
-                            else
-                            {
+                                sum++;
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("The license number must be 6 letters\n(Or the license-number already exist), try again.");
+                                Console.WriteLine("The license-number already exist.");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Thread.Sleep(4000);
                                 Console.Clear();
-                                break;
                             }
                         }
-                        else if (Type == 1) //Parkera MC
+                        if (sum == 0)
                         {
-                            Console.Clear();
-                            Console.WriteLine("Enter your license number:");
-                            string vehicle1 = Console.ReadLine().ToUpper();
-                            int sum = 0;
                             for (var i = 1; i < ParkingSlots.Length; i++)
                             {
-                                if (ParkingSlots[i].Contains(vehicle1))
+                                if (vehicle.Length == 6 && Type == 2 && sum == 0)
                                 {
-                                    sum++;
+                                    parkVehicleMC(Type, vehicle, ParkingSlots);
+                                    break;
+                                }
+                                else if (vehicle.Length == 6 && Type == 1 && sum == 0)
+                                {
+                                    parkVehicle(Type, vehicle, ParkingSlots);
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.Clear();
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("The license number must be 6 letters, try again.");
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    Thread.Sleep(4000);
+                                    Console.Clear();
+                                    break;
                                 }
                             }
-                            if (vehicle1.Length == 6 && sum == 0)
-                            {
-                                parkVehicle(Type, vehicle1, ParkingSlots);
-                                break;
-                            }
-                            else
-                            {
-                                Console.Clear();
-                                Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("The license number must be 6 letters\n(Or the license-number already exist), try again.");
-                                Console.ForegroundColor = ConsoleColor.White;
-                                Thread.Sleep(4000);
-                                Console.Clear();
-                                break;
-                            }
                         }
-                        else
-                        {
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("Invalid input, try again.");
-                            Console.ForegroundColor = ConsoleColor.White;
-                            Thread.Sleep(3000);
-                            Console.Clear();
-                            break;
-                        }
-        
+                       break;
                     case 2://Avparkera fordon.
                         Console.Clear();
                         Console.WriteLine("Enter: 1. Car | 2. MC");
@@ -123,10 +104,10 @@ namespace ArrayApplication
                         {
                             Console.Clear();
                             Console.WriteLine("Enter your license number:");
-                            string vehicle = Console.ReadLine().ToUpper();
-                            if (vehicle.Length == 6)
+                            string vehicle1 = Console.ReadLine().ToUpper();
+                            if (vehicle1.Length == 6)
                             {
-                                unParkVehicleMC(Type1, vehicle, ParkingSlots);
+                                unParkVehicleMC(Type1, vehicle1, ParkingSlots);
                                 break;
                             }
                             else
