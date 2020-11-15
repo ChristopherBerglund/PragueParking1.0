@@ -1,8 +1,7 @@
 # PragueParking1.0
 
-Edit: Buggen är nu kompletterat så att "car001" accepteras.
-Jag läste fel i uppgiften från början, skapade då hela strukturen i programmet efter att input skulle vara 10 tecken =/  (Vilket du kommer märka i min kodning även nu efter kompletteringen).
-Dock kunde jag faktiskt göra koden smidigare och kortare nu.
+Edit: Buggen är nu åtgärdad, så att tex "car001" accepteras.
+Jag läste fel i uppgiften från början, skapade då hela strukturen i programmet efter att input skulle vara exakt 10 tecken. Men har gått in och ändrat om väldigt mycket i koden nu. 
 
 
 
