@@ -22,7 +22,7 @@ namespace ArrayApplication
             string[] ParkingSlots = new string[101]; { };
             for (var i = 1; i < 101; i++)
             {
-                ParkingSlots[i] = "EMPTY1 ; EMPTY2";
+                ParkingSlots[i] = i + "." + "EMPTY1 - EMPTY2";
             }
 
             
@@ -32,15 +32,15 @@ namespace ArrayApplication
                 Console.Clear();
                 Console.WriteLine("Welcome to Prague Parking");
                 Console.WriteLine();
-                Console.WriteLine("1. Park vehicle");
-                Console.WriteLine("2. Unpark vehicle");
+                Console.WriteLine("[1] Park vehicle");
+                Console.WriteLine("[2] Unpark vehicle");
                 Console.WriteLine();
-                Console.WriteLine("3. Move a vehicle");
-                Console.WriteLine("4. Search for a vehicle");
-                Console.WriteLine("5. Check for free lots");
-                Console.WriteLine("6. Check all lots");
+                Console.WriteLine("[3] Move a vehicle");
+                Console.WriteLine("[4] Search for a vehicle");
+                Console.WriteLine("[5] Check for free lots");
+                Console.WriteLine("[6] Check all lots");
                 Console.WriteLine();
-                Console.WriteLine("7. Exit program (Admin only)");
+                Console.WriteLine("[7] Exit program (Admin only)");
                 Console.WriteLine();
                 Console.WriteLine("Choose a number and press \"enter\" for the desired selection:");
                 string input = Console.ReadLine();int userChoice;Int32.TryParse(input, out userChoice);
@@ -50,43 +50,40 @@ namespace ArrayApplication
                         Console.Clear();
                         Console.WriteLine("Enter: 1. Car | 2. MC");
                         string typ = Console.ReadLine().ToUpper(); int Type; Int32.TryParse(typ, out Type);
-
-                        Console.Clear();
                         Console.WriteLine("Enter your license number:");
                         string vehicle = Console.ReadLine().ToUpper();
-                        int sum = 0;
+                        bool IsValid = true;
                         for (var i = 1; i < ParkingSlots.Length; i++)
                         {
                             if (ParkingSlots[i].Contains(vehicle))
                             {
-                                sum++;
+                                IsValid = false;
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.Red;
                                 Console.WriteLine("The license-number already exist.");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Thread.Sleep(4000);
-                                Console.Clear();
+                                break;
                             }
                         }
-                        if (sum == 0)
+                        if (IsValid == true)
                         {
                             for (var i = 1; i < ParkingSlots.Length; i++)
                             {
-                                if (vehicle.Length == 6 && Type == 2 && sum == 0)
+                                if (vehicle.Length <= 10 && vehicle.Length >= 3 && Type == 2 && vehicle.Length > 3)
                                 {
                                     parkVehicleMC(Type, vehicle, ParkingSlots);
                                     break;
                                 }
-                                else if (vehicle.Length == 6 && Type == 1 && sum == 0)
+                                else if (vehicle.Length <= 10 && vehicle.Length >= 3 && Type == 1 && vehicle.Length > 3)
                                 {
                                     parkVehicle(Type, vehicle, ParkingSlots);
                                     break;
                                 }
                                 else
                                 {
-                                    Console.Clear();
                                     Console.ForegroundColor = ConsoleColor.Red;
-                                    Console.WriteLine("The license number must be 6 letters, try again.");
+                                    Console.WriteLine("Invalid input, try again.");
                                     Console.ForegroundColor = ConsoleColor.White;
                                     Thread.Sleep(4000);
                                     Console.Clear();
@@ -105,16 +102,15 @@ namespace ArrayApplication
                             Console.Clear();
                             Console.WriteLine("Enter your license number:");
                             string vehicle1 = Console.ReadLine().ToUpper();
-                            if (vehicle1.Length == 6)
+                            if (vehicle1.Length <= 10 && vehicle1.Length > 3)
                             {
                                 unParkVehicleMC(Type1, vehicle1, ParkingSlots);
                                 break;
                             }
                             else
                             {
-                                Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("The license number must be 6 letters, try again.");
+                                Console.WriteLine("The license number is not valid, try again.");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Thread.Sleep(3000);
                                 Console.Clear();
@@ -126,16 +122,15 @@ namespace ArrayApplication
                             Console.Clear();
                             Console.WriteLine("Enter your license number:");
                             string vehicle1 = Console.ReadLine().ToUpper();
-                            if (vehicle1.Length == 6)
+                            if (vehicle1.Length <= 10 && vehicle1.Length > 3)
                             {
                                 unParkVehicle(Type1, vehicle1, ParkingSlots);
                                 break;
                             }
                             else
                             {
-                                Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("The license number must be 6 letters, try again.");
+                                Console.WriteLine("The license number is not valid, try again.");
                                 Console.ForegroundColor = ConsoleColor.White;
                                 Thread.Sleep(3000);
                                 Console.Clear();
@@ -144,7 +139,6 @@ namespace ArrayApplication
                         }
                         else
                         {
-                            Console.Clear();
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("Invalid input, try again.");
                             Console.ForegroundColor = ConsoleColor.White;
@@ -153,7 +147,6 @@ namespace ArrayApplication
                             break;
                         }
                     case 3://Flytta Bil:
-                    
                         Console.Clear();
                         Console.WriteLine("Enter: 1. Car | 2. MC");
                         string typ2 = Console.ReadLine().ToUpper(); int Type3; Int32.TryParse(typ2, out Type3);
@@ -175,7 +168,6 @@ namespace ArrayApplication
                         }
                         else
                         {
-                            Console.Clear();
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("Invalid input, try again.");
                             Console.ForegroundColor = ConsoleColor.White;
@@ -187,16 +179,15 @@ namespace ArrayApplication
                         Console.Clear();
                         Console.WriteLine("Enter your license number:");
                         string vehicleS = Console.ReadLine().ToUpper();
-                        if (vehicleS.Length == 6)
+                        if (vehicleS.Length <= 10 && vehicleS.Length >= 4)
                         {
                             searchVehicle(vehicleS, ParkingSlots);
                             break;
                         }
                         else
                         {
-                            Console.Clear();
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("The license number must be 6 letters, try again.");
+                            Console.WriteLine("The license number is not valid, try again.");
                             Console.ForegroundColor = ConsoleColor.White;
                             Thread.Sleep(3000);
                             Console.Clear();
@@ -240,14 +231,13 @@ namespace ArrayApplication
         }
         static void parkVehicleMC(int Type, string vehicle, string[] ParkingSlots)
         {
-            int sum = 0;
+            bool IsValid = true;
             for (var y = 1; y < ParkingSlots.Length; y++)
             {
-                if (ParkingSlots[y].Substring(0, 6) == "EMPTY1")
+                if (ParkingSlots[y].Contains("EMPTY1"))
                 {
-                    sum++;
-                    ParkingSlots[y] = ParkingSlots[y].Replace("EMPTY1", vehicle);
-                    Console.Clear();
+                    IsValid = false;
+                    ParkingSlots[y] = ParkingSlots[y].Replace("EMPTY1", "MC1;" + vehicle);
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("MC with license nr: {0} is parked in slot:{1}", vehicle, y);
                     Console.ForegroundColor = ConsoleColor.White;
@@ -255,11 +245,10 @@ namespace ArrayApplication
                     Console.Clear();
                     break;
                 }
-                else if (ParkingSlots[y].Length > 13 && ParkingSlots[y].Substring(9, 6) == "EMPTY2")
+                else if (ParkingSlots[y].Contains("EMPTY2"))
                 {
-                    sum++;
-                    ParkingSlots[y] = ParkingSlots[y].Replace("EMPTY2", vehicle);
-                    Console.Clear();
+                    IsValid = false;
+                    ParkingSlots[y] = ParkingSlots[y].Replace("EMPTY2", "MC2;" + vehicle);
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("MC with license nr: {0} is parked in slot:{1}", vehicle, y);
                     Console.ForegroundColor = ConsoleColor.White;
@@ -268,7 +257,7 @@ namespace ArrayApplication
                     break;
                 }
             }
-            if (sum == 0)
+            if (IsValid == true)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Parking lot is full, please try later.");
@@ -279,14 +268,13 @@ namespace ArrayApplication
         }
         static void parkVehicle(int Type, string vehicle1, string[] ParkingSlots)
         {
-            int sum = 0;
+            bool IsValid = true;
             for (var y = 1; y < ParkingSlots.Length; y++)
             {
-                if (ParkingSlots[y] == "EMPTY1 ; EMPTY2")
+                if (ParkingSlots[y] == y + "." + "EMPTY1 - EMPTY2")
                 {
-                    sum++;
-                    ParkingSlots[y] = ParkingSlots[y].Replace("EMPTY1 ; EMPTY2", vehicle1);
-                    Console.Clear();
+                    IsValid = false;
+                    ParkingSlots[y] = ParkingSlots[y].Replace("EMPTY1 - EMPTY2", "CAR;" + vehicle1);
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Car with license nr: {0} is parked in slot:{1}", vehicle1, y);
                     Console.ForegroundColor = ConsoleColor.White;
@@ -295,9 +283,8 @@ namespace ArrayApplication
                     break;
                 }
             }
-            if (sum == 0)
+            if (IsValid == true)
             {
-                Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Parking lot is full, please try later.");
                 Console.ForegroundColor = ConsoleColor.White;
@@ -307,56 +294,54 @@ namespace ArrayApplication
         }
         static void unParkVehicleMC(int Type1, string vehicle, string[] ParkingSlots)
         {
-            int sum = 0;
+            bool IsValid = true;
             for (var y = 1; y < ParkingSlots.Length; y++)
             {
                 if (ParkingSlots[y].Contains(vehicle))
                 {
-                    sum++;
-                    if (ParkingSlots[y].Substring(0, 6) == vehicle)
+                    IsValid = false;
+                    if (ParkingSlots[y].Substring(0,16).Contains(vehicle))
                     {
                         ParkingSlots[y] = ParkingSlots[y].Replace(vehicle, "EMPTY1");
-                        Console.Clear();
+                        ParkingSlots[y] = ParkingSlots[y].Replace("MC1;", "");
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("MC with license nr: {0}, Welcome back!", vehicle, y);
+                        Console.WriteLine("MC1 with license nr: {0}, Welcome back!", vehicle, y);
                         Console.ForegroundColor = ConsoleColor.White;
                         Thread.Sleep(3000);
                         Console.Clear();
                         break;
                     }
-                    else if (ParkingSlots[y].Length > 13 && ParkingSlots[y].Substring(9, 6) == vehicle)
+                    else if (ParkingSlots[y].Contains("MC2"))
                     {
                         ParkingSlots[y] = ParkingSlots[y].Replace(vehicle, "EMPTY2");
-                        Console.Clear();
+                        ParkingSlots[y] = ParkingSlots[y].Replace("MC2;", "");
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("MC with license nr: {0}, Welcome back!", vehicle, y);
+                        Console.WriteLine("MC2 with license nr: {0}, Welcome back!", vehicle, y);
                         Console.ForegroundColor = ConsoleColor.White;
                         Thread.Sleep(3000);
                         Console.Clear();
                         break;
                     }
-                    
                 }
-                }
-                if(sum == 0)
-                {
-                Console.Clear();
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("No license number matched");
-                Console.ForegroundColor = ConsoleColor.White;
-                Thread.Sleep(3000);
-                Console.Clear();
+            }
+            if(IsValid == true)
+            {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("No license number matched");
+            Console.ForegroundColor = ConsoleColor.White;
+            Thread.Sleep(3000);
+            Console.Clear();
             }
         }
         static void unParkVehicle(int Type1, string vehicle1, string[] ParkingSlots)
         {
-            int sum = 0;
+            bool IsValid = true;
             for (var y = 1; y < ParkingSlots.Length; y++)
             {
-                if (ParkingSlots[y] == vehicle1)
+                if (ParkingSlots[y] == y + "."+ "CAR;" + vehicle1)
                 {
-                    sum ++;
-                    ParkingSlots[y] = ParkingSlots[y].Replace(vehicle1, "EMPTY1 ; EMPTY2");
+                    IsValid = false;
+                    ParkingSlots[y] = ParkingSlots[y].Replace("CAR;" + vehicle1, "EMPTY1 - EMPTY2");
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Car with license nr: {0}, Welcome back!", vehicle1);
                     Console.ForegroundColor = ConsoleColor.White;
@@ -365,9 +350,8 @@ namespace ArrayApplication
                     break;
                 }
             }
-            if(sum == 0)
+            if(IsValid == true)
             {
-                Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("No license number matched");
                 Console.ForegroundColor = ConsoleColor.White;
@@ -381,17 +365,15 @@ namespace ArrayApplication
             int sum = 0;
             for (var i = 0; i < ParkingSlots.Length; i++)
             {
-                if (ParkingSlots[i] == vehicleMove)
+                if (ParkingSlots[i] == i + "." + "CAR;" + vehicleMove && vehicleMove.Length >= 3)
                 {
-                    Console.Clear();
                     Console.WriteLine("Vehicle {0}, is parked at lot-nr: {1}", vehicleMove, i);
                     Console.WriteLine("Enter parking lotnumber to move vehicle: ");
                     int moveNr = int.Parse(Console.ReadLine());
-                    if (ParkingSlots[moveNr] == "EMPTY1 ; EMPTY2" && moveNr < 101)
+                    if (ParkingSlots[moveNr] == moveNr + "." + "EMPTY1 - EMPTY2" && moveNr < 101)
                     {
-                        ParkingSlots[i] = "EMPTY1 ; EMPTY2";
-                        ParkingSlots[moveNr] = vehicleMove;
-                        Console.Clear();
+                        ParkingSlots[i] = i + "." + "EMPTY1 - EMPTY2";
+                        ParkingSlots[moveNr] = moveNr + ".CAR;" + vehicleMove;
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Car is succesfully moved from lot-nr {1} to lot-nr {2}", vehicleMove, i, moveNr);
                         Console.ForegroundColor = ConsoleColor.White;
@@ -414,7 +396,6 @@ namespace ArrayApplication
                 }
                 if (sum == 101)
                 {
-                    Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("No license number matched");
                     Console.ForegroundColor = ConsoleColor.White;
@@ -425,45 +406,32 @@ namespace ArrayApplication
         }
         static void moveVehicleMC(string vehicleMove, string[] ParkingSlots)
         {
-           
-            int sum = 0;
-            int summ = 0;
+            bool isValid = false;
             for (var y = 1; y < ParkingSlots.Length; y++)
             {
                 if (ParkingSlots[y].Contains(vehicleMove))
                 {
                     Console.WriteLine("Enter parkingslotnumber to move vehicle: ");
                     int moveNr = int.Parse(Console.ReadLine());
-                    summ++;
 
-                    if (ParkingSlots[y].Substring(0, 6) == vehicleMove && ParkingSlots[moveNr].Substring(0, 6) == "EMPTY1" && moveNr < 101)
+                    isValid = true;
+                    if (ParkingSlots[y].Substring(0, 16).Contains(vehicleMove) && moveNr < 101 && vehicleMove.Length >= 3)
                     {
-
-                        sum++;
-                        Console.Clear();
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("Vehicle {0}, is parked at lot-nr: {1}", vehicleMove, y);
-                        Console.ForegroundColor = ConsoleColor.White;
-
-                        ParkingSlots[moveNr] = ParkingSlots[moveNr].Replace("EMPTY1", vehicleMove);
                         ParkingSlots[y] = ParkingSlots[y].Replace(vehicleMove, "EMPTY1");
-                        Console.Clear();
+                        ParkingSlots[y] = ParkingSlots[y].Replace("MC1;", "");
+                        ParkingSlots[moveNr] = ParkingSlots[moveNr].Replace("EMPTY1", "MC1;" + vehicleMove);
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Car is succesfully moved from lot-nr {0} to lot-nr {1}", vehicleMove, moveNr);
+                        Console.ForegroundColor = ConsoleColor.White;
                         Thread.Sleep(3000);
                         Console.Clear();
                             break;
                     }
-                    else if (ParkingSlots[y].Substring(9, 6) == vehicleMove && ParkingSlots[moveNr].Substring(0, 6) == "EMPTY1" && moveNr < 101)
+                    else 
                     {
-                        sum++;
-                        Console.Clear();
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("Vehicle {0}, is parked at lot-nr: {1}!", vehicleMove, y);
-                        Console.ForegroundColor = ConsoleColor.White;
-
-                        ParkingSlots[moveNr] = ParkingSlots[moveNr].Replace("EMPTY1", vehicleMove);
                         ParkingSlots[y] = ParkingSlots[y].Replace(vehicleMove, "EMPTY2");
-                        Console.Clear();
+                        ParkingSlots[y] = ParkingSlots[y].Replace("MC2;", "");
+                        ParkingSlots[moveNr] = ParkingSlots[moveNr].Replace("EMPTY2", "MC2;" + vehicleMove);
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Car is succesfully moved from lot-nr {0} to lot-nr {1}", vehicleMove, moveNr);
                         Console.ForegroundColor = ConsoleColor.White;
@@ -473,37 +441,34 @@ namespace ArrayApplication
                     }
                 }
             }
-                if (sum == 0)
+                if (isValid == false)
                 {
-                    Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("No license number matched, or the lot is not empty.");
                     Console.ForegroundColor = ConsoleColor.White;
                     Thread.Sleep(3000);
                     Console.Clear();
-                    return;
+                        return;
                 }
             }
         static void searchVehicle(string vehicleS, string[] ParkingSlots)
         {
-            int sum = 0;
+            bool IsValid = false;
             for (var y = 1; y < ParkingSlots.Length; y++)
             {
                 if (ParkingSlots[y].Contains(vehicleS))
                 {
-                    Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Vehicle with license nr: {0}, is parked in lot:{1}", vehicleS, y);
                     Console.ForegroundColor = ConsoleColor.White;
                     Thread.Sleep(3000);
                     Console.Clear();
-                    sum++;
+                    IsValid = true;
                     break;
                 }
             }
-               if(sum == 0)
+            if (IsValid == false)
                 {
-                    Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("No license number matched");
                     Console.ForegroundColor = ConsoleColor.White;
@@ -517,8 +482,7 @@ namespace ArrayApplication
             int freeSlots = 0;
             for (var y = 1; y < ParkingSlots.Length; y++)
             {
-                if (ParkingSlots[y] == "EMPTY1 ; EMPTY2")
-                {
+                if (ParkingSlots[y].Contains("EMPTY1 - EMPTY2"))                {
                     freeSlots++;
                 }
             }
@@ -532,21 +496,21 @@ namespace ArrayApplication
 
             for(var x = 1; x < ParkingSlots.Length; x++)
             {
-                if (ParkingSlots[x] == "EMPTY1 ; EMPTY2")
+                if (ParkingSlots[x].Contains("EMPTY1 - EMPTY2"))
                 {
                     Tom++;
                 }
-                else if (ParkingSlots[x].Length == 6)
+                else if (ParkingSlots[x].Substring(2, 3).Contains("CAR"))
                 {
                     bil++;
                 }
-                else if (ParkingSlots[x].Length == 15 && ParkingSlots[x].Contains("EMPTY1") || ParkingSlots[x].Contains("EMPTY2"))
+                else if (ParkingSlots[x].Contains("MC1") && ParkingSlots[x].Contains("MC2"))
                 {
+                    MC++;
                     MC++;
                 }
                 else
                 {
-                    MC++;
                     MC++;
                 }
             }
@@ -569,17 +533,17 @@ namespace ArrayApplication
             Console.WriteLine();
             for (var x = 1; x < ParkingSlots.Length; x++)
             {
-                if(ParkingSlots[x].Contains("EMPTY1 ; EMPTY2"))
+                if(ParkingSlots[x].Contains("EMPTY1 - EMPTY2"))
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine(ParkingSlots[x]);
                 }
-                else if(ParkingSlots[x].Length < 7)
+                else if(ParkingSlots[x].Substring(2, 3).Contains("CAR"))
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(ParkingSlots[x]);
                 }
-                else if (ParkingSlots[x].Length == 15 && !ParkingSlots[x].Contains("EMPTY"))
+                else if (ParkingSlots[x].Contains("MC1") && ParkingSlots[x].Contains("MC2"))
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(ParkingSlots[x]);
