@@ -300,7 +300,7 @@ namespace ArrayApplication
                 if (ParkingSlots[y].Contains(vehicle))
                 {
                     IsValid = false;
-                    if (ParkingSlots[y].Substring(0,16).Contains(vehicle))
+                    if (ParkingSlots[y].Substring(0,16).Contains(vehicle) && ParkingSlots[y].Substring(0, 16).Contains("MC"))
                     {
                         ParkingSlots[y] = ParkingSlots[y].Replace(vehicle, "EMPTY1");
                         ParkingSlots[y] = ParkingSlots[y].Replace("MC1;", "");
@@ -538,7 +538,7 @@ namespace ArrayApplication
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine(ParkingSlots[x]);
                 }
-                else if(ParkingSlots[x].Substring(2, 3).Contains("CAR"))
+                else if(ParkingSlots[x].Substring(2, 4).Contains("CAR"))
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(ParkingSlots[x]);
