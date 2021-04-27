@@ -1,0 +1,37 @@
+﻿@model HotellIsaacChristopher.Models.Room
+@*
+    int a
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@if (ViewBag.IsRoomAvailable = true)
+{
+<h4>@ViewBag.Rumsinfo</h4>
+
+
+
+
+                <div class="row">
+                    <div class="col-md-4">
+
+                        <form asp-action="ConfirmBooking">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <p>Firstname</p>
+                            <input id="_FirstName" name="_FirstName" type="text" class="" value="" onclick="ConfirmBooking()" />
+                            <p>LastName</p>
+                            <input id="_LastName" name="_LastName" type="text" class="" value="" onclick="ConfirmBooking()" />
+                            <p>E-Mail</p>
+                            <input id="_Email" name="_Email" type="email" class="" value="" onclick="ConfirmBooking()" />
+
+                            <p> </p>
+                            <input type="submit" style="margin: 5px;" value="Confirm Booking" class="Boka" />
+
+
+                        </form>
+                    </div>
+                </div>
+
+}
+@ViewBag.Errormessage
+
+

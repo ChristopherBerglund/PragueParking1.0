@@ -1,0 +1,30 @@
+﻿@model HotellIsaacChristopher.Models.Booking
+
+@{ ViewData["Title"] = "Create"; }
+
+<h1>Create</h1>
+
+<h4>Book</h4>
+<hr />
+<div class="row" style="margin: 10px;">
+    <div class="col-md-4">
+
+        <form asp-action="LookForAvailableRooms">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <p>Firstname</p>
+            <input id="_FirstName" name="_FirstName" type="text" class="" value="" onclick="ConfirmBooking()" />
+            <p>LastName</p>
+            <input id="_LastName" name="_LastName" type="text" class="" value="" onclick="ConfirmBooking()" />
+            <input id="BookFrom" name="BookFrom" type="date" class="" value="" onclick="LookForAvailableRooms()" />
+            <input id="BookTo" name="BookTo" type="date" class="" value="" onclick="LookForAvailableRooms()" />
+            <p>Antal personer </p>
+            <input id="NoOfMembers" name="NoOfMembers" type="number" class="" value="" onclick="LookForAvailableRooms()" min="0" max="2" />
+            <input type="submit" style="margin: 5px;" value="Available rooms" class="Boka" />
+            <
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
