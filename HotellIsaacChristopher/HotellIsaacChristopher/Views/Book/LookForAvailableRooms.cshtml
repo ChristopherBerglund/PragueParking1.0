@@ -20,8 +20,15 @@
                             <input id="_FirstName" name="_FirstName" type="text" class="" value="" onclick="ConfirmBooking()" />
                             <p>LastName</p>
                             <input id="_LastName" name="_LastName" type="text" class="" value="" onclick="ConfirmBooking()" />
-                            <p>E-Mail</p>
-                            <input id="_Email" name="_Email" type="email" class="" value="" onclick="ConfirmBooking()" />
+                            <p>Hide</p>
+                            <input type="hidden" name="_BookFrom" class="" value="@ViewBag.bookfrom" />
+                            <input type="hidden" name="_BookFrom" class="" value="@ViewBag.bookto" />
+                            <input type="hidden" name="_RoomID" class="" value="@ViewBag.bookedRoomID" />
+                            <input type="hidden" name="_BookedRoomID" class="" value="@ViewBag.RoomId" />
+                            <input type="hidden" name="_ToBeBooked" class="" value="@ViewBag.ToBeBooked" />
+
+
+
 
                             <p> </p>
                             <input type="submit" style="margin: 5px;" value="Confirm Booking" class="Boka" />
@@ -29,9 +36,12 @@
 
                         </form>
                     </div>
-                </div>
+                </div>}
 
 }
 @ViewBag.Errormessage
+@*@TempData["tidfrån"];
+    @TempData["tidtill"]*@
+
 
 

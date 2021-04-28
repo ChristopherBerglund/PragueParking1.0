@@ -21,7 +21,7 @@ namespace HotellIsaacChristopher.Controllers
             return View();
         }
 
-        public IActionResult LookForAvailableRooms(DateTime BookFrom, DateTime BookTo, int NoOfMembers,)
+        public IActionResult LookForAvailableRooms(DateTime BookFrom, DateTime BookTo, int NoOfMembers)
         {
             
            
@@ -41,10 +41,12 @@ namespace HotellIsaacChristopher.Controllers
             //    ViewBag.Rooms = item.Namn;
             //}
             List<Room> NotAvailable = new List<Room>();
-            List<Room> AllaRum = new List<Room>();
+            
 
             var Antalupptagnaplatserinnomspannet = _context.Bookings.Where(x => x.CheckIn >= BookFrom && x.CheckOut <= BookTo)
                                             .Select(x => x.Room.NoOfBeds).Sum();
+
+            List<Room> AllaRum = new List<Room>();
             var Upptagnarum = _context.Bookings.Where(x => x.CheckIn >= BookFrom && x.CheckOut <= BookTo)
                                             .Select(x => x.Room).ToList();
             foreach (var line in _context.Rooms)
@@ -67,13 +69,16 @@ namespace HotellIsaacChristopher.Controllers
 
 
 
-            TempData["tidfrån"] = BookFrom;
-            TempData["tidtill"] = BookTo;
+            //TempData["tidfrån"] = BookFrom;
+            //TempData["tidtill"] = BookTo;
+           
+
+
 
 
 
             var totalaplatser = _context.Rooms.Select(x => x.NoOfBeds).Sum();
-            bool RoomsAreAvailable = false;
+            bool RoomsAreAvailable;
 
             var checkInned = BookFrom;
             ViewBag.Inchecked = checkInned;
@@ -87,8 +92,12 @@ namespace HotellIsaacChristopher.Controllers
                     "Wooho! We have the perfect room available for your, " + AllaRum[0].RoomName.ToString() +
                     " is avaible " + (BookTo - BookFrom).TotalDays + " night for the total sum of: " +
                     (BookTo - BookFrom).TotalDays * AllaRum[0].PricePerNight + " SEK";
-              
 
+                int bookedRoomID = AllaRum[0].RoomID;
+                ViewBag.bookfrom = BookFrom;
+                ViewBag.bookto = BookTo;
+                ViewBag.RoomId = bookedRoomID;
+                ViewBag.ToBeBooked = AllaRum[0];
                 return View();
             }
             else
@@ -98,9 +107,9 @@ namespace HotellIsaacChristopher.Controllers
                 return View();
             }
 
+           
 
-            
-          
+
 
 
 
@@ -112,22 +121,24 @@ namespace HotellIsaacChristopher.Controllers
 
 
 
-        public IActionResult ConfirmBooking(string _FirstName, string _LastName, List<Room> AllaRum) //string _FirstName, string _LastName, string Email, List<Room> AllaRum
+        public IActionResult ConfirmBooking(string _FirstName, string _LastName, DateTime _BookFrom, DateTime _BookTo, int _BookedRoomID, Room _ToBeBooked) //string _FirstName, string _LastName, string Email, List<Room> AllaRum
         {
-            if (TempData.Any()) { 
-            DateTime bookfrom = [TempData"tidfrån"] as DateTime;
-            };
+
+
+
+
             var guester = new Guest
             {
                 FirstName = _FirstName,
                 LastName = _LastName,
+                BookingID =
             };
             _context.AddRange(guester);
             _context.SaveChanges();
 
             var orderer = new Order
             {
-                Price = (_BookTo - _BookFrom).TotalDays * AllaRum[0].PricePerNight,
+                Price = (_BookTo - _BookFrom).TotalDays * _ToBeBooked.PricePerNight,
                 GuestID = guester.GuestID,
                 Guest = guester
             };
@@ -140,8 +151,9 @@ namespace HotellIsaacChristopher.Controllers
                 CheckOut = _BookTo,
                 GuestID = guester.GuestID,
                 Guest = guester,
-                RoomID = AllaRum[0].RoomID,
-                Room = AllaRum[0]
+                RoomID = _BookedRoomID,
+                Room = _ToBeBooked
+
             };
             _context.AddRange(bookinger);
             _context.SaveChanges();
